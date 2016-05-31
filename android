@@ -1,0 +1,4 @@
+# https://github.com/try2codesecure/ShellMS
+wget https://f-droid.org/repo/com.android.shellms_4.apk
+adb install com.android.shellms_4.apk
+adb shell am startservice -n com.android.shellms/.sendSMS -e contact +370xxxxxxxx -e msg "Message"

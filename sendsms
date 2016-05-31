@@ -1,0 +1,19 @@
+#!/bin/sh
+# Copyright (c) 2016 justinas@eofnet.lt, EOFNET LAB06.
+# v1.0
+# Require Android 2.2 >
+# Send SMS script works with https://f-droid.org/repo/com.android.shellms_4.apk
+# Prerequisites:
+# wget https://f-droid.org/repo/com.android.shellms_4.apk
+# adb install com.android.shellms_4.apk
+ADB=adb
+
+if [ $# != 2 ];then
+	echo "Usage: $0 \"Phone Number\" \"Your message\""
+	exit
+else
+	$ADB shell am startservice -n com.android.shellms/.sendSMS -e contact "$1" -e msg "$2" 1>/dev/null
+	sleep 1;
+	$ADB logcat -d -s ShellMS_Service_sendSMS:*
+        $ADB logcat -c
+fi

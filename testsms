@@ -1,0 +1,10 @@
+#!/usr/bin/perl
+print "testing sms sending...\n";
+my $command = "sendsms \+370xxxxxxxx \"Although APK downloads are available below to give you the choice, you should be aware that by installing that way you will not receive update notifications, and it's a less secure way to download. We recommend that you install the F-Droid client and use that.\"";
+if (system($command)) {
+    print "ERROR\r\n";
+}
+else {
+    print "DONE\r\n";
+}
+
